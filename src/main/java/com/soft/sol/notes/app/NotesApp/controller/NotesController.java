@@ -37,4 +37,9 @@ public class NotesController {
 	public NotesBeanWrapper retrieveNotes() {
 		return notesService.retrieveNotesList();
 	}
+	
+	@RequestMapping(path = "/delete", method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
+	public void deleteNote(NotesBean notesBean) {
+		notesService.deleteNote(notesBean.getId());
+	}
 }

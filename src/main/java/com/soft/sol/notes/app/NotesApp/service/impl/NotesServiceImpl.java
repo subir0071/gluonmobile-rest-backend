@@ -1,6 +1,5 @@
 package com.soft.sol.notes.app.NotesApp.service.impl;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +32,12 @@ public class NotesServiceImpl implements NotesService {
 		List<NoteDoc> noteDocList = notesRepository.findAll();
 		NotesBeanWrapper notesBeanWrapper = notesMapper.convertNoteDocToNotesBeanList(noteDocList);
 		return notesBeanWrapper;
+	}
+	
+	public void deleteNote(String noteId){
+		NoteDoc noteDoc = new NoteDoc();
+		noteDoc = notesRepository.findOne(noteId);
+		notesRepository.delete(noteDoc);
+		System.out.println("Done");
 	}
 }
